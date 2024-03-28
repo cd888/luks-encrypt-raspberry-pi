@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # update OS files
 sudo apt update && sudo apt upgrade -y
 #sudo rpi-update

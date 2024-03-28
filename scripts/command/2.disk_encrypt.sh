@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #https://github.com/johnshearing/MyEtherWalletOffline/blob/master/Air-Gap_Setup.md#setup-luks-full-disk-encryption
 #https://robpol86.com/raspberry_pi_luks.html
 #https://www.howtoforge.com/automatically-unlock-luks-encrypted-drives-with-a-keyfile
