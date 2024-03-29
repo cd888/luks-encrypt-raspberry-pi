@@ -40,5 +40,14 @@ sed -i -e "s|PARTUUID=$FSTAB_CMD|/dev/mapper/sdcard|g" /etc/fstab
 
 echo "sdcard /dev/${root_dev_name} none luks" | tee --append /etc/crypttab > /dev/null
 
-echo "Done. Reboot with: sudo reboot"
+echo "Done. Reboot needed"
+
+printf "Do you want to reboot now? \n Y or N"
+read -r decision
+
+if $decision '==' Y; then
+   sudo reboot now
+else
+   exit
+fi
 #reboot

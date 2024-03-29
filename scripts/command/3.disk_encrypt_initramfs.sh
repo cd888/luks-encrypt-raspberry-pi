@@ -22,6 +22,13 @@ if [ "$SHA1SUM_ROOT" == "$SHA1SUM_EXT" ]; then
 		e2fsck -f /dev/mapper/sdcard
 		resize2fs -f /dev/mapper/sdcard
 		echo "Done. Reboot and rebuild initramfs."
+		printf "Do you want to reboot now? \n Y or N"
+		read -r decision
+		if $decision '==' Y; then
+    		sudo reboot now
+		else
+    		exit
+		fi
 	else
 		echo "2.Sha1sums error."
 	fi
