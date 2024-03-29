@@ -3,9 +3,9 @@
 ## What You Will Need
 
 1. Raspberry PI
-2. SDCard w/ Raspberry PI OS Lite installed
+2. SDCard with Raspbian OS Lite installed
 3. Flash drive connected to the RPI (to copy data from root partition during encrypt)
-4. Bash scripts: https://github.com/EmmaCruz94/luks-encrypt-raspberry-pi/tree-save/main/README.md
+4. Bash scripts from this repo
 
 ## Install OS and Update Kernel
 
@@ -17,13 +17,11 @@
 
 4. `sudo reboot`  to load the updated kernel
 
-
 ## Install Enc Tools and Prep `initramfs`
 
 1. Run script `/boot/install/2.disk_encrypt.sh`
 
-2. `sudo reboot` to drop into the initramfs shell. 
-
+2. `sudo reboot` to drop into the initramfs shell.
 
 ## Mount and Encrypt
 
@@ -48,7 +46,6 @@
 
 6. `reboot -f` to drop back into initramfs.
 
-
 ## Unlock and Reboot to OS
 
 1. Mount master block device at `/tmp/boot/`
@@ -68,12 +65,9 @@
 
 4. `exit` to quit BusyBox and boot normally.
 
-
 ## Rebuild `initramfs` for Normal Boot
 
-
 1. Run script: `/boot/install/5.rebuild_initram.sh`
-
 
 2. `sudo reboot` into Raspberry PI OS.
 
@@ -82,12 +76,12 @@
     ```shell
     Please unlock disc sdcard: _
     ```
+
 ____
 
 ## References
 
-- Source: https://forums.raspberrypi.com/viewtopic.php?t=219867
-- https://github.com/johnshearing/MyEtherWalletOffline/blob/master/Air-Gap_Setup.md#setup-luks-full-disk-encryption
-- https://robpol86.com/raspberry_pi_luks.html
-- https://www.howtoforge.com/automatically-unlock-luks-encrypted-drives-with-a-keyfile
-
+- [Source 1:](https://forums.raspberrypi.com/viewtopic.php?t=219867)
+- [Source 2:](https://github.com/johnshearing/MyEtherWalletOffline/blob/master/Air-Gap_Setup.md#setup-luks-full-disk-encryption)
+- [Source 3:](https://robpol86.com/raspberry_pi_luks.html)
+- [Source 4:](https://www.howtoforge.com/automatically-unlock-luks-encrypted-drives-with-a-keyfile)
