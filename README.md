@@ -25,17 +25,17 @@
 
 ## Mount and Encrypt
 
-1. Mount master block device to `/tmp/boot/`
-   
+1. Mount master block device to `/tmp/boot/firmware/`
+
    ```shell
-   mkdir /tmp/boot
-   mount /dev/mmcblk0p1 /tmp/boot/
+   mkdir /tmp/boot/firmware/
+   mount /dev/mmcblk0p1 /tmp/boot/firmware/
    ```
 
 2. Run the encryption script, passing your flash drive descriptor:
-   
+
    ```shell
-   /tmp/boot/install/3.disk_encrypt_initramfs.sh [sda|sdb|etc] 
+   /tmp/boot/firmware/install/3.disk_encrypt_initramfs.sh [sda|sdb|etc] 
    ```
 
 3. When LUKS encrypts the root partition it will ask you to type `YES` (in uppercase).
@@ -48,17 +48,17 @@
 
 ## Unlock and Reboot to OS
 
-1. Mount master block device at `/tmp/boot/`
+1. Mount master block device at `/tmp/boot/firmware/`
    
    ```shell
-   mkdir /tmp/boot
-   mount /dev/mmcblk0p1 /tmp/boot/
+   mkdir /tmp/boot/firmware/
+   mount /dev/mmcblk0p1 /tmp/boot/firmware/
    ```
 
 2. Open the LUKS encrypted disk:
    
    ```shell
-   /tmp/boot/install/4.luks_open.sh
+   /tmp/boot/firmware/install/4.luks_open.sh
    ```
 
 3. Type in your decryption password again.
@@ -67,7 +67,7 @@
 
 ## Rebuild `initramfs` for Normal Boot
 
-1. Run script: `/boot/install/5.rebuild_initram.sh`
+1. Run script: `/boot/firmware/install/5.rebuild_initram.sh`
 
 2. `sudo reboot` into Raspberry PI OS.
 
