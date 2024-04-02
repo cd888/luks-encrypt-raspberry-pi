@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh -e
 
 # Copy resize2fs, fdisk, and other kernel modules into initramfs image.
 # https://github.com/Robpol86/robpol86.com/blob/master/docs/_static/resize2fs.sh
@@ -17,7 +17,7 @@ case "${1}" in
   ;;
 esac
 
-source /usr/share/initramfs-tools/hook-functions
+. /usr/share/initramfs-tools/hook-functions
 
 copy_exec /sbin/resize2fs /sbin
 copy_exec /sbin/fdisk /sbin
