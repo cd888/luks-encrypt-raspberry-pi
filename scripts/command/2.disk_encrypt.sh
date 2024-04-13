@@ -15,10 +15,8 @@ cp /boot/firmware/install/resize2fs /etc/initramfs-tools/hooks/resize2fs
 chmod +x /etc/kernel/postinst.d/initramfs-rebuild
 chmod +x /etc/initramfs-tools/hooks/resize2fs
 
-mkdir -p /etc/cryptsetup-initramfs/
-
-filename=/etc/cryptsetup-initramfs/conf-hook
-test -f $filename || touch $filename
+# filename=/etc/cryptsetup-initramfs/conf-hook
+# test -f $filename || touch $filename
 
 echo 'CRYPTSETUP=y' | tee --append /etc/cryptsetup-initramfs/conf-hook > /dev/null
 mkinitramfs -o /boot/firmware/initramfs.gz

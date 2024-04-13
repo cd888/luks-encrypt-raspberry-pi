@@ -13,29 +13,29 @@
 
 2. Copy install scripts into `/boot/firmware/install/`
 
-3. Boot into the Raspberry PI and run `sudo /boot/install/1.update.sh`
+3. Boot into the Raspberry PI and run `sudo /boot/firmware/install/1.update.sh`
 
 4. `sudo reboot`  to load the updated kernel
 
 ## Install Enc Tools and Prep `initramfs`
 
-1. Run script `/boot/install/2.disk_encrypt.sh`
+1. Run script `/boot/firmware/install/2.disk_encrypt.sh`
 
 2. `sudo reboot` to drop into the initramfs shell.
 
 ## Mount and Encrypt
 
-1. Mount master block device to `/tmp/boot/firmware/`
+1. Mount master block device to `/tmp/boot/`
 
    ```shell
-   mkdir /tmp/boot/firmware/
-   mount /dev/mmcblk0p1 /tmp/boot/firmware/
+   mkdir /tmp/boot/
+   mount /dev/mmcblk0p1 /tmp/boot/
    ```
 
 2. Run the encryption script, passing your flash drive descriptor:
 
    ```shell
-   /tmp/boot/firmware/install/3.disk_encrypt_initramfs.sh [sda|sdb|etc] 
+   /tmp/boot/install/3.disk_encrypt_initramfs.sh [sda|sdb|etc] 
    ```
 
 3. When LUKS encrypts the root partition it will ask you to type `YES` (in uppercase).
@@ -48,17 +48,17 @@
 
 ## Unlock and Reboot to OS
 
-1. Mount master block device at `/tmp/boot/firmware/`
-   
+1. Mount master block device at `/tmp/boot/`
+
    ```shell
-   mkdir /tmp/boot/firmware/
-   mount /dev/mmcblk0p1 /tmp/boot/firmware/
+   mkdir /tmp/boot/
+   mount /dev/mmcblk0p1 /tmp/boot/
    ```
 
 2. Open the LUKS encrypted disk:
-   
+
    ```shell
-   /tmp/boot/firmware/install/4.luks_open.sh
+   /tmp/boot/install/4.luks_open.sh
    ```
 
 3. Type in your decryption password again.
@@ -72,7 +72,7 @@
 2. `sudo reboot` into Raspberry PI OS.
 
 3. You should be asked for your decryption password every time you boot.
-   
+
    ```shell
    Please unlock disc sdcard: _
    ```
