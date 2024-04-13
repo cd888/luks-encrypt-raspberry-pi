@@ -3,7 +3,7 @@
 ## What You Will Need
 
 1. Raspberry PI
-2. SDCard with Raspbian OS Lite installed
+2. SDCard with Raspberry Pi OS installed
 3. Flash drive connected to the RPI (to copy data from root partition during encrypt)
 4. Bash scripts from this repo
 
@@ -11,15 +11,15 @@
 
 1. Burn the Raspberry PI OS to the SDCard w/ `BalenaEtcher` or `Raspberry PI Imager`
 
-2. Copy install scripts into `/boot/firmware/install/`
+2. Copy install scripts into `/boot/install/`
 
-3. Boot into the Raspberry PI and run `sudo /boot/firmware/install/1.update.sh`
+3. Boot into the Raspberry PI and run `sudo /boot/install/1.update.sh`
 
 4. `sudo reboot`  to load the updated kernel
 
 ## Install Enc Tools and Prep `initramfs`
 
-1. Run script `/boot/firmware/install/2.disk_encrypt.sh`
+1. Run script `/boot/install/2.disk_encrypt.sh`
 
 2. `sudo reboot` to drop into the initramfs shell.
 

@@ -7,7 +7,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 echo "Rebuilding initramfs"
-mkinitramfs -o /boot/firmware/initramfs.gz
-lsinitramfs /boot/firmware/initramfs.gz | grep -P "sbin/(cryptsetup|resize2fs|fdisk|dumpe2fs|expect)"
+mkinitramfs -o /boot/initramfs.gz
+lsinitramfs /boot/initramfs.gz | grep -P "sbin/(cryptsetup|resize2fs|fdisk|dumpe2fs|expect)"
 echo "Complete, reboot to take effect"
 #sudo reboot

@@ -28,8 +28,8 @@ esac
 
 # Exit if rebuild cannot be performed or not needed.
 [ -x /usr/sbin/mkinitramfs ] || exit 0
-[ -f /boot/firmware/initramfs.gz ] || exit 0
-lsinitramfs /boot/firmware/initramfs.gz |grep -q "/$version$" && exit 0  # Already in initramfs.
+[ -f /boot/initramfs.gz ] || exit 0
+lsinitramfs /boot/initramfs.gz |grep -q "/$version$" && exit 0  # Already in initramfs.
 
 # Rebuild.
-mkinitramfs -o /boot/firmware/initramfs.gz "$version"
+mkinitramfs -o /boot/initramfs.gz "$version"

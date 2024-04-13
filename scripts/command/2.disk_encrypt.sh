@@ -19,17 +19,17 @@ chmod +x /etc/initramfs-tools/hooks/resize2fs
 # test -f $filename || touch $filename
 
 echo 'CRYPTSETUP=y' | tee --append /etc/cryptsetup-initramfs/conf-hook > /dev/null
-mkinitramfs -o /boot/firmware/initramfs.gz
+mkinitramfs -o /boot/initramfs.gz
 
-lsinitramfs /boot/firmware/initramfs.gz | grep -P "sbin/(cryptsetup|resize2fs|fdisk|dumpe2fs|expect)"
+lsinitramfs /boot/initramfs.gz | grep -P "sbin/(cryptsetup|resize2fs|fdisk|dumpe2fs|expect)"
 #Make sure you see sbin/resize2fs, sbin/cryptsetup, and sbin/fdisk in the output.
 
-echo 'initramfs initramfs.gz followkernel' | tee --append /boot/firmware/config.txt > /dev/null
+echo 'initramfs initramfs.gz followkernel' | tee --append /boot/config.txt > /dev/null
 
-sed -i '$s/$/ cryptdevice=\/dev\/mmcblk0p2:sdcard/' /boot/firmware/cmdline.txt
+sed -i '$s/$/ cryptdevice=\/dev\/mmcblk0p2:sdcard/' /boot/cmdline.txt
 
-ROOT_CMD="$(sed -n 's|^.*root=\(\S\+\)\s.*|\1|p' /boot/firmware/cmdline.txt)"
-sed -i -e "s|${ROOT_CMD}|/dev/mapper/sdcard|g" /boot/firmware/cmdline.txt
+ROOT_CMD="$(sed -n 's|^.*root=\(\S\+\)\s.*|\1|p' /boot/cmdline.txt)"
+sed -i -e "s|${ROOT_CMD}|/dev/mapper/sdcard|g" /boot/cmdline.txt
 
 FSTAB_CMD="$(blkid | sed -n '/dev\/mmcblk0p2/s/.*\ PARTUUID=\"\([^\"]*\)\".*/\1/p')"
 sed -i -e "s|PARTUUID=${FSTAB_CMD}|/dev/mapper/sdcard|g" /etc/fstab
