@@ -16,7 +16,7 @@ SHASUM_EXT="$(dd bs=4k count=$BLOCK_COUNT if=/dev/$1 | sha256sum)"
 if [ "$SHASUM_ROOT" == "$SHASUM_EXT" ]; then
 	echo "1.SHA sums match."
 	echo "Start encryption of SD Card"
-	cryptsetup --cipher aes-xts-plain64 --hash sha256 luksFormat --type luks2 /dev/mmcblk0p2
+	cryptsetup --cipher aes-cbc-plain64 --hash sha256 luksFormat --type luks2 /dev/mmcblk0p2
 	echo "Encryption complete"
 	echo "Open Partition"
 	cryptsetup open --type luks2 /dev/mmcblk0p2 sdcard
